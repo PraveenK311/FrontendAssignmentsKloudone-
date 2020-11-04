@@ -1,0 +1,267 @@
+Practice program:
+------------------------------------------------------------------------------------------------------------------------------
+Function Example:
+
+function myfunction(number)
+{
+    
+    var numberArray=[];
+    for(i=0;i<number;i++){
+    numberArray.push(i);
+    }
+    console.log(numberArray)
+ 
+}
+myfunction(10)
+
+------------------------------------------------------------------------------------------------------------------------------
+Callback function program:
+
+function add(a,b,callback)
+   {
+       var sum=a+b;
+       console.log(sum);
+       callback(sum);
+   }
+   function multiply(num)
+   {
+       console.log(num*2);
+   }
+   add(1,2,multiply);
+-----------------------------------------------------------------
+Checking email sample program:
+
+var checkEmail = (input) => (input.includes('@') && input.includes('.com'));
+console.log(checkEmail('something@gmail.com'));
+---------------------------------------------------------------------------------------------------------------------
+var names = ['praveen', 'vivek', 'soundarya', 'thisIsTheLongestString', 'short'];
+var longestString = '';
+
+for (var i=0;i<names.length; i++) {
+  if (longestString.length > names[i].length) {
+    longestString = longestString;
+  } else {
+    longestString = names[i];
+  }
+}
+console.log(longestString);
+--------------------------------------------------------------------
+reversing the array sample program:
+
+var name="Praveen";
+var reverseName=[];
+for(i=(name.length);i>=0;i--){
+    reverseName.push(name.charAt(i));
+}
+console.log(reverseName.join(''));
+-----------------------------------------------------------------------
+var name="AAAABBBBCCCCDDDD";
+var newName=[];
+var length=(name.length);
+function duplicateChar(){
+for (i=0;i<length;i++){    
+    if (!newName.includes("charAt(i)")){
+        newName.push(name.charAt(i));
+    }    
+
+}
+console.log(newName);
+}
+duplicateChar();
+---------------------------------------------------------------------------
+
+
+function Employee(name, age) {
+  return {
+    name: name,
+    age: age,
+    seniorCitizen: age>50,
+    address: `name resides at ${name} ${age}`
+  };
+}
+
+var madhu = Employee('madhu', 27);
+var vivek = Employee('vivek', 54);
+console.log(praveen);
+console.log(vivek);
+------------------------------------------------------------
+
+scope chain:
+sample program:
+
+function addTwoNumbers(a,b) {
+   console.log('parent level a is ' + a);
+  (function () {
+    //var a = 10;
+    console.log('first level ' + a);
+    (function (){
+      //var a = 12;
+      console.log('second level ' + a);
+    })();
+  })();
+  return a+b;
+}
+addTwoNumbers(1,2);
+
+
+
+----------------------------------------------------------------------------
+event loop:
+sample program:
+
+function getComputedNumber(num) {
+  return addOne(num);
+}
+
+function addOne(num) { 
+   return multiplyByThree(num+1);
+}
+
+function multiplyByThree(num) {
+  return divideByTwo(num*3);
+}
+
+function divideByTwo(num) {
+   return num/2;
+}
+
+console.log(getComputedNumber(2));
+----------------------------------------------------------------------------
+Prototype:
+sample program:
+let animal = {
+  eats: () => console.log('eats')
+};
+let rabbit = {
+  jumps: () => console.log('jumps')
+};
+
+let dog = {
+  barks: () => console.log('barks')
+}
+
+rabbit.__proto__ = animal; // (*)
+dog.__proto__ = animal;
+
+// we can find both properties in rabbit now:
+console.log( rabbit.eats() ); // true (**)
+console.log( rabbit.jumps() ); // true
+console.log(dog.barks());
+
+console.dir(rabbit);
+console.dir(dog);
+
+--------------------------------------------------------
+
+Array.prototype.myUcase = function() {
+  for (i = 0; i < this.length; i++) {
+    this[i] = this[i].toUpperCase();
+  }
+};
+
+Array.prototype.multiplyByTwo = function() {
+  for (i = 0; i < this.length; i++) {
+    this[i] = this[i]*2;
+  }
+};
+
+------------------------------------------------------------
+Multiple values assigning through the data type example:
+sample program:
+
+var a = b = c = 1;
+console.log(b);
+console.log(a);
+console.log(c);
+c = 'str';
+a = 'a string';
+console.log(b);
+console.log(c);
+console.log(a);
+-------------------------------------------
+object.define property:
+
+const object1 = {};
+
+Object.defineProperty(object1, 'property1', {
+  enumerable: true,
+  configurable: false,
+  writable: true,
+  value: 'vivek'
+});
+
+Object.defineProperty(object1, 'property2', {
+  enumerable: true,
+  configurable: false,
+  writable: false,
+  value: 'madhu'
+});
+
+
+ console.dir(object1);
+
+for (let key in object1) {
+  console.log(key);
+}
+----------------------------------------------------------------------------------------------------
+Scope chain example:
+
+var name = 'universal';
+(function () {
+   var name = 'soundarya';
+  console.log(name);
+    (function () {
+       var name = 'madhu';
+      console.log(name);
+        (function () {
+          var name = 'praveen';
+          console.log(name);
+    })();
+  })();
+})();
+
+----------------------------------------------------------------------------------------------------
+Var hoisting Example:
+
+console.log(a);
+console.log(b);
+var a = 10;
+var b = 12;
+console.log(a);
+
+// var a;
+// var b;
+// console.log(a);
+// console.log(b);
+// var a = 10;
+// var b = 20;
+// console.log(a);
+‐-------------‐------------------------------------------------
+Object creation using Class:
+
+class Car {
+constructor(maker, price) {
+this.maker = maker;
+this.price = price;
+}
+getInfo() 
+console.log(this.maker + " costs : " + this.price);
+}
+}
+var car1 = new Car("BMW", 100);
+car1.getInfo();
+var car2 = new Car("Audi", 150);
+car2.getInfo();
+class Jaguar extends Car {
+constructor (name, price) {
+super();
+this.maker = name;
+this.price = price;
+}
+printName() {
+console.log(`the car is jaguar model`);
+}
+}
+var jag1 = new Jaguar('jag', 1244);
+console.log(jag1.getInfo());
+console.dir(jag1);
