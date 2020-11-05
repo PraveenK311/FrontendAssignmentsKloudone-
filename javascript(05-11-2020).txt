@@ -1,0 +1,62 @@
+Two ways to copy the objects:
+
+1.)shallow copy:
+-----------------------------------------------------
+// same memory
+const array = ['name', 'is', 'array'];
+
+const arrayCopy = array;
+
+delete arrayCopy[0];
+
+console.log(array);
+-------------------------------------------------------
+// new memory
+const array = ['name', 'is', 'array'];
+const arrayCopy = [...array];
+console.log(arrayCopy);
+another way to assign:
+
+-------------------------------------------------------
+(object.design())
+
+// new memory
+const array = ['name', 'is', 'array'];
+
+const arrayCopy = Object.assign(array);
+console.log(arrayCopy);
+
+2.)deep copy:
+----------------------------------------------
+const a = {
+  foods: {
+    dinner: {
+      againAnother: [
+        {someprop: 'somevalue'},
+        {deepProp: {
+          nestedProp: 'nestedValue'
+        }}
+      ]
+    }
+  }
+};
+
+const b = Object.assign(a);
+b.foods.dinner.againAnother = [];
+console.log(b);
+console.log(a);
+----------------------------------------------
+Default parameters:
+
+// default parameter example
+function multiply(a=2,b) {
+  return a * b;
+}
+
+console.log(multiply(2, 2));
+// expected output: 10
+
+console.log(multiply(undefined, 5));
+// expected output: 10
+
+--------------------------------------------------------
