@@ -1,0 +1,95 @@
+Sample Programs:
+------------------------------------------------------------
+Array.prototype.myUcase = function() {
+  for (i = 0; i < this.length; i++) {
+    this[i] = this[i].toUpperCase();
+  }
+};
+
+Array.prototype.multiplyByTwo = function() {
+  for (i = 0; i < this.length; i++) {
+    this[i] = this[i]*2;
+  }
+};
+
+var names = ['madhu', 'karthick', 'vivek'];
+var students = ['mukesh', 'rahuman', 'keerthana'];
+var numbers = [1,2,3];
+names.myUcase();
+students.myUcase();
+console.log(names);
+console.log(students);
+numbers.multiplyByTwo();
+console.dir(numbers);
+------------------------------------------------------------
+
+Two ways to copy the objects:
+shallow copy:
+-----------------------------------------------------
+// same memory
+const array = ['name', 'is', 'array'];
+
+const arrayCopy = array;
+
+delete arrayCopy[0];
+
+console.log(array);
+-------------------------------------------------------
+// new memory
+const array = ['name', 'is', 'array'];
+
+const arrayCopy = [...array];
+console.log(arrayCopy);
+another way to assign:
+
+-------------------------------------------------------
+(object.design())
+
+// new memory
+const array = ['name', 'is', 'array'];
+
+const arrayCopy = Object.assign(array);
+console.log(arrayCopy);
+-----------------------------------------------------------------------------------------------------------
+deep copy:
+----------------------------------------------
+const a = {
+  foods: {
+    dinner: {
+      againAnother: [
+        {someprop: 'somevalue'},
+        {deepProp: {
+          nestedProp: 'nestedValue'
+        }}
+      ]
+    }
+  }
+};
+
+const b = Object.assign(a);
+b.foods.dinner.againAnother = [];
+console.log(b);
+console.log(a);
+
+----------------------------------------------------------------------------------------------------------------------
+// palindrom example
+
+const palindrome = (str) => str.split('').reverse().join('') === str;
+console.log('madam is a palindrom: ' + palindrome('madam'));
+console.log('malayalam is a palindrom: ' + palindrome('malayalam'));
+console.log('vivek is a palindrom: ' + palindrome('vivek'));
+----------------------------------------------------------------------------------------------------------------------
+// palindrome example - adding palindrome method to string prototype
+
+String.prototype.isPalindrome = function() {
+  const copy = JSON.parse(JSON.stringify(this));
+  return this.split('').reverse().join('') === copy;
+}
+
+// const palindrome = (str) => str.split('').reverse().join('') === str;
+console.log('madam'.isPalindrome());
+console.log('vivek'.isPalindrome());
+console.log('malayalam'.isPalindrome());
+console.dir(String);
+
+------------------------------------------------------------------------------------------------------------------------
